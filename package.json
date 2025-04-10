@@ -7,10 +7,15 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["freelance", "calculator", "react", "rate calculator"],
+  "author": "Claude Code by Anthropic",
   "license": "ISC",
-  "description": "",
+  "description": "A freelance rate calculator that helps professionals determine their hourly, daily, and weekly rates based on current compensation",
+  "homepage": "https://taurean.github.io/freelance-calculator/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taurean/freelance-calculator.git"
+  },
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
