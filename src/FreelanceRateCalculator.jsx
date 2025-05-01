@@ -100,6 +100,7 @@ const FreelanceRateCalculator = () => {
 
     // UI state
     const [showResetNotification, setShowResetNotification] = useState(false);
+    const [showPSA, setShowPSA] = useState(false);
 
     // Section tracker
     const [currentSection, setCurrentSection] = useState(1);
@@ -1212,15 +1213,105 @@ const FreelanceRateCalculator = () => {
                 </div>
             )}
 
-            {/* Claude badge */}
-            <div className="mt-8 text-center">
-                <div className="inline-flex items-center bg-[#F2816F] text-white text-xs px-2 py-1 rounded-md shadow-sm">
+            {/* Claude badge and disclaimer */}
+            <div className="mt-8 text-center space-y-2">
+                <button 
+                    onClick={() => setShowPSA(true)} 
+                    className="inline-flex items-center bg-[#F2816F] text-white text-xs px-2 py-1 rounded-md shadow-sm hover:bg-[#e06a59] transition-colors cursor-pointer"
+                >
                     <span className="opacity-90 mr-1">
                         vibe coded with claude
                     </span>
                     <span className="text-sm">😬</span>
-                </div>
+                </button>
+                <p className="text-xs text-slate-500 italic">
+                    Every line of code in this project, including GitHub Actions deployment workflows, was written and is maintained by Claude. 
+                    <a href="https://github.com/taurean/freelance-calculator" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline ml-1">
+                      View on GitHub
+                    </a>
+                </p>
+                <p className="text-xs text-slate-500">
+                    This site uses <a href="https://pirsch.io/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Pirsch Analytics</a> to collect anonymous usage data. 
+                    <a href="https://freelance-calculator.pirsch.io/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline ml-1">
+                      View public dashboard
+                    </a>.
+                </p>
             </div>
+            
+            {/* Anti-Vibe Coding PSA Modal */}
+            {showPSA && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white w-11/12 max-w-md mx-auto rounded-lg shadow-lg overflow-hidden border-4 border-red-700">
+                        <div className="bg-black text-white p-4 flex justify-between items-center">
+                            <h3 className="text-xl font-bold uppercase tracking-wide">⚠️ WARNING ⚠️</h3>
+                            <button 
+                                onClick={() => setShowPSA(false)}
+                                className="text-white hover:text-gray-300"
+                            >
+                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="p-6">
+                            <h4 className="text-red-700 text-lg font-bold mb-4">VIBE CODING KILLS PRODUCTIVITY</h4>
+                            <div className="flex mb-4">
+                                <div className="w-1/3 pr-4">
+                                    <div className="bg-red-100 p-3 rounded-lg">
+                                        <span className="text-5xl block text-center">🧠</span>
+                                        <p className="text-xs text-center mt-2 font-bold">YOUR BRAIN ON CODE</p>
+                                    </div>
+                                </div>
+                                <div className="w-1/3 px-2 flex items-center justify-center">
+                                    <span className="text-2xl">➡️</span>
+                                </div>
+                                <div className="w-1/3 pl-4">
+                                    <div className="bg-red-100 p-3 rounded-lg">
+                                        <span className="text-5xl block text-center">🫠</span>
+                                        <p className="text-xs text-center mt-2 font-bold">YOUR BRAIN ON VIBES</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p className="text-sm text-gray-700 mb-3">
+                                <strong>Surgeon General's Warning:</strong> Vibe Coding can lead to:
+                            </p>
+                            <ul className="text-sm text-gray-700 mb-6 pl-5 list-disc">
+                                <li>Severe technical debt</li>
+                                <li>Unmaintainable codebase syndrome</li>
+                                <li>Dependency hell</li>
+                                <li>Type errors and runtime exceptions</li>
+                                <li>Sleepless nights debugging</li>
+                            </ul>
+                            
+                            <div className="bg-red-50 p-3 border border-red-200 rounded-lg mb-6">
+                                <div className="flex items-center mb-2 border-b border-red-200 pb-2">
+                                    <span className="text-3xl mr-3">📉</span>
+                                    <h5 className="text-red-800 font-bold">SKILL ATROPHY ALERT</h5>
+                                </div>
+                                <div className="pl-2">
+                                    <p className="text-xs mb-1 text-gray-700"><span className="line-through">Year 1:</span> <span className="font-mono font-bold">function learnToCode() {`{`} return &quot;Hello World&quot;; {`}`}</span></p>
+                                    <p className="text-xs mb-1 text-gray-700"><span className="line-through">Year 3:</span> <span className="font-mono font-bold">class AdvancedDeveloper implements SeniorEngineer {`{}`}</span></p>
+                                    <p className="text-xs text-gray-700"><span className="font-bold">Year 5:</span> <span className="font-mono italic text-red-500">const vibes = () =&gt; &quot;✨ whatever works ✨&quot;;</span></p>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-yellow-100 p-4 rounded-lg text-center border border-yellow-400">
+                                <p className="text-sm font-bold">The American Association of Software Engineers strongly advises against vibe coding.</p>
+                                <p className="text-xs mt-2">Study shows 89% of vibe coders experience stunted professional growth.</p>
+                                <p className="text-xs italic mt-1">Choose structured development practices instead.</p>
+                            </div>
+                        </div>
+                        <div className="bg-red-700 text-white p-3 text-center">
+                            <button 
+                                onClick={() => setShowPSA(false)}
+                                className="bg-white text-red-700 font-bold py-1 px-4 rounded shadow hover:bg-gray-100 transition-colors"
+                            >
+                                I UNDERSTAND THE RISKS
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
