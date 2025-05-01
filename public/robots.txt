@@ -1,0 +1,6 @@
+# Allow all web crawlers (Google, Bing, etc)
+User-agent: *
+Allow: /
+
+# Sitemap (if we had one)
+# Sitemap: https://taurean.github.io/freelance-calculator/sitemap.xml

@@ -284,7 +284,7 @@ const FreelanceRateCalculator = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6">
+        <div className="max-w-3xl mx-auto p-4 sm:p-6">
             {/* Reset notification */}
             {showResetNotification && (
                 <div className="fixed top-4 right-4 bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-3 rounded shadow-md z-50 transition-all duration-300 transform">
@@ -305,11 +305,11 @@ const FreelanceRateCalculator = () => {
                 </div>
             )}
 
-            <h1 className="text-2xl font-serif font-bold text-center mb-6 text-slate-800">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-center mb-4 sm:mb-6 text-slate-800">
                 Freelance Rate Calculator
             </h1>
-            <div className="border-t-2 border-b-2 border-slate-800 py-2 mb-6">
-                <h2 className="text-lg font-serif text-center text-slate-700">
+            <div className="border-t-2 border-b-2 border-slate-800 py-2 mb-4 sm:mb-6">
+                <h2 className="text-base sm:text-lg font-serif text-center text-slate-700">
                     Calculate recommended rates based on your current
                     compensation
                 </h2>
@@ -324,9 +324,9 @@ const FreelanceRateCalculator = () => {
                         Enter your current work hours and compensation details.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="mb-4">
-                            <label className="block text-slate-700 mb-1 font-medium">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                        <div className="mb-2 sm:mb-4">
+                            <label className="block text-slate-700 mb-1 font-medium text-sm sm:text-base">
                                 Hours per day
                             </label>
                             <input
@@ -337,12 +337,14 @@ const FreelanceRateCalculator = () => {
                                         Math.max(1, Number(e.target.value)),
                                     )
                                 }
-                                className="w-full p-2 border border-slate-300 rounded bg-white"
+                                className="w-full p-2 border border-slate-300 rounded bg-white text-base"
+                                inputMode="numeric"
+                                aria-label="Hours worked per day"
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <label className="block text-slate-700 mb-1 font-medium">
+                        <div className="mb-2 sm:mb-4">
+                            <label className="block text-slate-700 mb-1 font-medium text-sm sm:text-base">
                                 Days per week
                             </label>
                             <input
@@ -356,7 +358,9 @@ const FreelanceRateCalculator = () => {
                                         ),
                                     )
                                 }
-                                className="w-full p-2 border border-slate-300 rounded bg-white"
+                                className="w-full p-2 border border-slate-300 rounded bg-white text-base"
+                                inputMode="numeric"
+                                aria-label="Days worked per week"
                             />
                         </div>
 
@@ -499,16 +503,18 @@ const FreelanceRateCalculator = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 flex justify-between">
+                    <div className="mt-6 flex flex-col sm:flex-row justify-between gap-3">
                         <button
                             onClick={resetToDefaults}
-                            className="bg-slate-200 text-slate-700 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium text-sm"
+                            className="bg-slate-200 text-slate-700 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium text-sm order-2 sm:order-1"
+                            aria-label="Reset all form values to default settings"
                         >
                             Reset to Defaults
                         </button>
                         <button
                             onClick={nextSection}
-                            className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium"
+                            className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium order-1 sm:order-2"
+                            aria-label="Continue to rate multipliers section"
                         >
                             Next: Rate Multipliers
                         </button>
@@ -633,24 +639,27 @@ const FreelanceRateCalculator = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 flex justify-between">
-                        <div>
+                    <div className="mt-6 flex flex-col sm:flex-row justify-between gap-3">
+                        <div className="flex flex-col sm:flex-row gap-2 order-2 sm:order-1">
                             <button
                                 onClick={prevSection}
-                                className="bg-slate-200 text-slate-800 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium mr-2"
+                                className="bg-slate-200 text-slate-800 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium"
+                                aria-label="Return to previous section"
                             >
                                 ← Back
                             </button>
                             <button
                                 onClick={resetToDefaults}
                                 className="bg-slate-200 text-slate-700 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium text-sm"
+                                aria-label="Reset all form values to default settings"
                             >
                                 Reset to Defaults
                             </button>
                         </div>
                         <button
                             onClick={nextSection}
-                            className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium"
+                            className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium order-1 sm:order-2"
+                            aria-label="Continue to results section"
                         >
                             View Results
                         </button>
@@ -687,16 +696,17 @@ const FreelanceRateCalculator = () => {
                             Standard Freelance Rates
                         </h3>
                         <div className="bg-white p-4 rounded border border-slate-200">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-3 border-r border-slate-200">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div className="p-3 sm:border-r border-slate-200">
                                     <p className="text-slate-600 text-sm uppercase tracking-wide">
                                         Hourly Rate
                                     </p>
                                     <p className="text-xl font-serif font-bold text-slate-800">
                                         {formatCurrency(freelanceHourlyRate)}
                                     </p>
+                                    <div className="sm:hidden border-b border-slate-100 mt-3"></div>
                                 </div>
-                                <div className="p-3 border-r border-slate-200">
+                                <div className="p-3 sm:border-r border-slate-200">
                                     <p className="text-slate-600 text-sm uppercase tracking-wide">
                                         Day Rate
                                     </p>
@@ -710,6 +720,7 @@ const FreelanceRateCalculator = () => {
                                         )}
                                         %
                                     </p>
+                                    <div className="sm:hidden border-b border-slate-100 mt-3"></div>
                                 </div>
                                 <div className="p-3">
                                     <p className="text-slate-600 text-sm uppercase tracking-wide">
@@ -1188,24 +1199,27 @@ const FreelanceRateCalculator = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 flex justify-between">
-                        <div>
+                    <div className="mt-6 flex flex-col sm:flex-row justify-between gap-3">
+                        <div className="flex flex-col sm:flex-row gap-2 order-2 sm:order-1">
                             <button
                                 onClick={prevSection}
-                                className="bg-slate-200 text-slate-800 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium mr-2"
+                                className="bg-slate-200 text-slate-800 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium"
+                                aria-label="Return to previous section"
                             >
                                 ← Back
                             </button>
                             <button
                                 onClick={resetToDefaults}
                                 className="bg-slate-200 text-slate-700 px-4 py-2 rounded hover:bg-slate-300 transition-colors font-medium text-sm"
+                                aria-label="Reset all form values to default settings"
                             >
                                 Reset to Defaults
                             </button>
                         </div>
                         <button
                             onClick={() => setCurrentSection(1)}
-                            className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium"
+                            className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition-colors font-medium order-1 sm:order-2"
+                            aria-label="Return to first step"
                         >
                             Start Over
                         </button>
@@ -1239,42 +1253,43 @@ const FreelanceRateCalculator = () => {
             
             {/* Anti-Vibe Coding PSA Modal */}
             {showPSA && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white w-11/12 max-w-md mx-auto rounded-lg shadow-lg overflow-hidden border-4 border-red-700">
-                        <div className="bg-black text-white p-4 flex justify-between items-center">
-                            <h3 className="text-xl font-bold uppercase tracking-wide">⚠️ WARNING ⚠️</h3>
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white w-full max-w-md mx-auto rounded-lg shadow-lg overflow-hidden border-4 border-red-700">
+                        <div className="bg-black text-white p-3 sm:p-4 flex justify-between items-center">
+                            <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide">⚠️ WARNING ⚠️</h3>
                             <button 
                                 onClick={() => setShowPSA(false)}
                                 className="text-white hover:text-gray-300"
+                                aria-label="Close warning message"
                             >
-                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
-                        <div className="p-6">
-                            <h4 className="text-red-700 text-lg font-bold mb-4">VIBE CODING KILLS PRODUCTIVITY</h4>
+                        <div className="p-4 sm:p-6">
+                            <h4 className="text-red-700 text-base sm:text-lg font-bold mb-3 sm:mb-4">VIBE CODING KILLS PRODUCTIVITY</h4>
                             <div className="flex mb-4">
-                                <div className="w-1/3 pr-4">
-                                    <div className="bg-red-100 p-3 rounded-lg">
-                                        <span className="text-5xl block text-center">🧠</span>
-                                        <p className="text-xs text-center mt-2 font-bold">YOUR BRAIN ON CODE</p>
+                                <div className="w-1/3 pr-2 sm:pr-4">
+                                    <div className="bg-red-100 p-2 sm:p-3 rounded-lg">
+                                        <span className="text-4xl sm:text-5xl block text-center">🧠</span>
+                                        <p className="text-xs text-center mt-1 sm:mt-2 font-bold">YOUR BRAIN ON CODE</p>
                                     </div>
                                 </div>
-                                <div className="w-1/3 px-2 flex items-center justify-center">
-                                    <span className="text-2xl">➡️</span>
+                                <div className="w-1/3 px-1 sm:px-2 flex items-center justify-center">
+                                    <span className="text-xl sm:text-2xl">➡️</span>
                                 </div>
-                                <div className="w-1/3 pl-4">
-                                    <div className="bg-red-100 p-3 rounded-lg">
-                                        <span className="text-5xl block text-center">🫠</span>
-                                        <p className="text-xs text-center mt-2 font-bold">YOUR BRAIN ON VIBES</p>
+                                <div className="w-1/3 pl-2 sm:pl-4">
+                                    <div className="bg-red-100 p-2 sm:p-3 rounded-lg">
+                                        <span className="text-4xl sm:text-5xl block text-center">🫠</span>
+                                        <p className="text-xs text-center mt-1 sm:mt-2 font-bold">YOUR BRAIN ON VIBES</p>
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-700 mb-3">
+                            <p className="text-sm text-gray-700 mb-2 sm:mb-3">
                                 <strong>Surgeon General's Warning:</strong> Vibe Coding can lead to:
                             </p>
-                            <ul className="text-sm text-gray-700 mb-6 pl-5 list-disc">
+                            <ul className="text-xs sm:text-sm text-gray-700 mb-4 sm:mb-6 pl-5 list-disc">
                                 <li>Severe technical debt</li>
                                 <li>Unmaintainable codebase syndrome</li>
                                 <li>Dependency hell</li>
@@ -1282,20 +1297,20 @@ const FreelanceRateCalculator = () => {
                                 <li>Sleepless nights debugging</li>
                             </ul>
                             
-                            <div className="bg-red-50 p-3 border border-red-200 rounded-lg mb-6">
+                            <div className="bg-red-50 p-3 border border-red-200 rounded-lg mb-4 sm:mb-6">
                                 <div className="flex items-center mb-2 border-b border-red-200 pb-2">
-                                    <span className="text-3xl mr-3">📉</span>
-                                    <h5 className="text-red-800 font-bold">SKILL ATROPHY ALERT</h5>
+                                    <span className="text-2xl sm:text-3xl mr-2 sm:mr-3">📉</span>
+                                    <h5 className="text-red-800 font-bold text-sm sm:text-base">SKILL ATROPHY ALERT</h5>
                                 </div>
-                                <div className="pl-2">
-                                    <p className="text-xs mb-1 text-gray-700"><span className="line-through">Year 1:</span> <span className="font-mono font-bold">function learnToCode() {`{`} return &quot;Hello World&quot;; {`}`}</span></p>
-                                    <p className="text-xs mb-1 text-gray-700"><span className="line-through">Year 3:</span> <span className="font-mono font-bold">class AdvancedDeveloper implements SeniorEngineer {`{}`}</span></p>
-                                    <p className="text-xs text-gray-700"><span className="font-bold">Year 5:</span> <span className="font-mono italic text-red-500">const vibes = () =&gt; &quot;✨ whatever works ✨&quot;;</span></p>
+                                <div className="pl-1 sm:pl-2">
+                                    <p className="text-xs mb-1 text-gray-700 overflow-x-auto"><span className="line-through">Year 1:</span> <span className="font-mono font-bold">function learnToCode() {`{`} return &quot;Hello World&quot;; {`}`}</span></p>
+                                    <p className="text-xs mb-1 text-gray-700 overflow-x-auto"><span className="line-through">Year 3:</span> <span className="font-mono font-bold">class AdvancedDeveloper implements SeniorEngineer {`{}`}</span></p>
+                                    <p className="text-xs text-gray-700 overflow-x-auto"><span className="font-bold">Year 5:</span> <span className="font-mono italic text-red-500">const vibes = () =&gt; &quot;✨ whatever works ✨&quot;;</span></p>
                                 </div>
                             </div>
                             
-                            <div className="bg-yellow-100 p-4 rounded-lg text-center border border-yellow-400">
-                                <p className="text-sm font-bold">The American Association of Software Engineers strongly advises against vibe coding.</p>
+                            <div className="bg-yellow-100 p-3 sm:p-4 rounded-lg text-center border border-yellow-400">
+                                <p className="text-xs sm:text-sm font-bold">The American Association of Software Engineers strongly advises against vibe coding.</p>
                                 <p className="text-xs mt-2">Study shows 89% of vibe coders experience stunted professional growth.</p>
                                 <p className="text-xs italic mt-1">Choose structured development practices instead.</p>
                                 <div className="border-t border-yellow-400 mt-3 pt-2 text-xs text-left text-gray-700">
@@ -1307,6 +1322,7 @@ const FreelanceRateCalculator = () => {
                             <button 
                                 onClick={() => setShowPSA(false)}
                                 className="bg-white text-red-700 font-bold py-1 px-4 rounded shadow hover:bg-gray-100 transition-colors"
+                                aria-label="Close warning message"
                             >
                                 I UNDERSTAND THE RISKS
                             </button>
