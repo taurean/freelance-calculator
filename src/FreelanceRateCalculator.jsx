@@ -1224,10 +1224,9 @@ const FreelanceRateCalculator = () => {
                     </span>
                     <span className="text-sm">😬</span>
                 </button>
-                <p className="text-xs text-slate-500 italic">
-                    Every line of code in this project, including GitHub Actions deployment workflows, was written and is maintained by Claude. 
-                    <a href="https://github.com/taurean/freelance-calculator" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline ml-1">
-                      View on GitHub
+                <p className="text-xs text-slate-500">
+                    <a href="https://github.com/taurean/freelance-calculator" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                      View source on GitHub
                     </a>
                 </p>
                 <p className="text-xs text-slate-500">
@@ -1299,6 +1298,9 @@ const FreelanceRateCalculator = () => {
                                 <p className="text-sm font-bold">The American Association of Software Engineers strongly advises against vibe coding.</p>
                                 <p className="text-xs mt-2">Study shows 89% of vibe coders experience stunted professional growth.</p>
                                 <p className="text-xs italic mt-1">Choose structured development practices instead.</p>
+                                <div className="border-t border-yellow-400 mt-3 pt-2 text-xs text-left text-gray-700">
+                                    <em>PS: Every line of code in this project, including this modal and GitHub Actions deployment workflows, was written and is maintained by Claude.</em>
+                                </div>
                             </div>
                         </div>
                         <div className="bg-red-700 text-white p-3 text-center">
